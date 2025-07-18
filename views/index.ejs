@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Location Tracker</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+</head>
+<body class="font-[Poppins]">
+    <div id="name-modal-overlay" class="fixed inset-0 z-[2000] flex items-center justify-center bg-black/70">
+        <div class="w-11/12 max-w-sm p-8 text-center bg-white rounded-lg shadow-xl">
+            <h2 class="mb-2 text-2xl font-semibold">Welcome to the Tracker</h2>
+            <p class="mb-6 text-gray-600">Please enter your name to continue</p>
+            <form id="name-form">
+                <input type="text" id="name-input" placeholder="Your Name" required class="w-full p-3 mb-4 text-base border border-gray-300 rounded">
+                <button type="submit" class="w-full p-3 font-medium text-white transition-colors bg-blue-600 rounded cursor-pointer hover:bg-blue-700">Join</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="flex w-screen h-screen">
+        <div id="user-panel" class="fixed bottom-0 left-0 right-0 z-[1500] h-1/2 transform translate-y-full overflow-y-auto rounded-t-lg bg-white p-4 shadow-2xl transition-transform duration-300 ease-in-out md:relative md:z-auto md:h-full md:w-72 md:translate-y-0 md:border-r md:shadow-none md:rounded-none border-gray-200">
+            <button id="close-panel-btn" class="absolute top-3 right-4 text-gray-500 hover:text-gray-800 md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <h3 class="pb-2 mb-4 text-lg font-semibold border-b-2 border-blue-600">Active Users</h3>
+            <ul id="user-list" class="space-y-2"></ul>
+        </div>
+        
+        <div id="map" class="h-full flex-grow"></div>
+    </div>
+
+    <button id="show-users-btn" class="fixed bottom-6 right-6 z-[1001] flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+        </svg>
+    </button>
+    
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
